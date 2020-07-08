@@ -97,7 +97,7 @@ class ClientMock:
         except BrokenPipeError:
             raise ConnectionClosed()
         if self.ssl: # https://bugs.python.org/issue25951
-            assert ret == len(encoded_line), (ret, repr(encoded_line))
+            assert ret is None or ret == len(encoded_line), (ret, repr(encoded_line))
         else:
             assert ret is None, ret
         if self.show_io:
