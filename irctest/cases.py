@@ -267,6 +267,8 @@ class BaseServerTestCase(_IrcTestCase):
         self.clients[name] = client_mock.ClientMock(name=name,
                 show_io=show_io)
         self.clients[name].connect(self.hostname, self.port)
+        if self.ssl:
+            self.clients[name].starttls()
         return name
 
 
